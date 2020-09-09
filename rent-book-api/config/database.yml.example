@@ -1,0 +1,24 @@
+default: &default
+  adapter: mysql2
+  reconnect: true
+  encoding: utf8mb4
+  charset: utf8mb4
+  collation: utf8mb4_bin
+  pool: <%= ENV.fetch("MYSQL_POOL") { 5 } %>
+  host: <%= ENV["DATABASE_HOSTNAME"] %>
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
+
+development:
+  <<: *default
+  database: <%= ENV["DATABASE_DEVELOPMENT"]
+
+test:
+  <<: *default
+  database: <%= ENV["DATABASE_TEST"]
+
+production:
+  <<: *default
+  database: <%= ENV["DATABASE_PRODUCTION"]
+  username: <%= ENV["DATABASE_USERNAME_PRODUCTION"]
+  password: <%= ENV['DATABASE_PASSWORD_PRODUCTION'] %>
