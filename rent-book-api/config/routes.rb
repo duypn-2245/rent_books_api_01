@@ -10,7 +10,9 @@ Rails.application.routes.draw do
         namespace :admin do
           resources :books
         end
-        resources :books, only: %i(index show)
+        resources :books, only: %i(index show) do
+          resources :comments, except: %i(new edit show)
+        end
       end
     end
   end

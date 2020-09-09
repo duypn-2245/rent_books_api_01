@@ -8,6 +8,7 @@ en:
     missing_token: "Missing token!"
     missing_params: "Missing params!"
     unauthorized: "Unauthorized"
+    detele_failed: "Delete failed!"
   not_found_data: "Data not found"
   time:
     formats:

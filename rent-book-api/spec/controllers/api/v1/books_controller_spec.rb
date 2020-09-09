@@ -12,7 +12,7 @@ RSpec.describe Api::V1::BooksController, type: :controller do
     before{book}
 
     include_examples "response http status", :ok
-    include_examples "index valid json", "books"
+    include_examples "index valid json", "books", 1
   end
 
   describe "GET #show" do

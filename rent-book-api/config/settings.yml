@@ -32,5 +32,7 @@ json_web_token:
 show_limit_per_page:
   book:
     index_limit: 15
+  comment:
+    index_limit: 15
 per_page:
   default_1: 1

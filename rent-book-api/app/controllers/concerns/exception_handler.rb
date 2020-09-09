@@ -32,6 +32,10 @@ module ExceptionHandler
     rescue_from CanCan::AccessDenied do |_error|
       response_json I18n.t("errors.unauthorized"), :forbidden
     end
+
+    rescue_from ActiveRecord::RecordNotDestroyed do |_error|
+      response_json I18n.t("errors.detele_failed"), :internal_server_error
+    end
   end
 
   private

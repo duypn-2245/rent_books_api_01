@@ -1,0 +1,4 @@
+vi:
+  comments:
+    destroy:
+      success: "Xóa thành công."
