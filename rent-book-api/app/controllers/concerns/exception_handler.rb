@@ -22,7 +22,7 @@ module ExceptionHandler
     rescue_from ActiveRecord::RecordInvalid, with: :response_json_with_invalid
 
     rescue_from ExceptionHandler::MissingToken do |_error|
-      response_json I18n.t("errors.missing_token"), :unprocessable_entity
+      response_json I18n.t("errors.missing_token"), :unauthorized
     end
 
     rescue_from ExceptionHandler::MisstingParams do |_error|
