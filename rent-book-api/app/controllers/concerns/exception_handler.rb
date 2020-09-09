@@ -19,9 +19,7 @@ module ExceptionHandler
       response_json I18n.t("errors.not_found_data"), :not_found
     end
 
-    rescue_from ActiveRecord::RecordInvalid do |_error|
-      response_json I18n.t("errors.invalid_data"), :unprocessable_entity
-    end
+    rescue_from ActiveRecord::RecordInvalid, with: :response_json_with_invalid
 
     rescue_from ExceptionHandler::MissingToken do |_error|
       response_json I18n.t("errors.missing_token"), :unprocessable_entity
@@ -38,5 +36,11 @@ module ExceptionHandler
     render json: {
       messages: message
     }, status:  status
+  end
+
+  def response_json_with_invalid error
+    render json: {
+      messages: error.record.errors
+    }, status: :unprocessable_entity
   end
 end

@@ -1,0 +1,6 @@
+en:
+  registrations:
+    create:
+      missing_params: "Missing params!"
+      signed_up: "Signed up successfully."
+      signed_up_failed: "Signed up failed."

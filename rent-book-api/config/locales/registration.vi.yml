@@ -1,0 +1,6 @@
+vi:
+  registrations:
+    create:
+      missing_params: "Thiếu tham số truyền vào!"
+      signed_up: "Đăng ký thành công."
+      signed_up_failed: "Đăng kí thất bại"

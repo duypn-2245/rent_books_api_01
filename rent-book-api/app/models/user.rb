@@ -9,7 +9,7 @@ class User < ApplicationRecord
                     length: {maximum: Settings.user.email.maximum},
                     format: {with: Settings.user.email.valid},
                     uniqueness: true
-  validates :password_digest, presence: true,
+  validates :password, presence: true, confirmation: true,
                        length: {minimum: Settings.user.password.minimum}
 
   before_save :downcase_email
