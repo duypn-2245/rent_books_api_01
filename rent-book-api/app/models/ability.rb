@@ -12,6 +12,7 @@ class Ability
 
   def user_abilities user
     can :read, Book
+    can :hot_rentals, Book
     can [:read, :create], Comment
     can [:update, :destroy], Comment, user_id: user.id
     can :create, RegisterBook

@@ -19,4 +19,13 @@ class Book < ApplicationRecord
   scope :recent, ->{order created_at: :desc}
   scope :available, ->{where "quantity > ?", 0}
   scope :by_ids, ->(ids){where id: ids}
+  scope :hot_books, (lambda do |limit|
+    joins(register_book_details: [:register_book])
+    .select("books.*")
+    .where("MONTH(register_book_details.created_at) = ? and register_books.status IN (?) ",
+           Time.zone.now.month, [RegisterBook.statuses[:pending], RegisterBook.statuses[:approved]])
+    .group("books.id")
+    .order("sum(register_book_details.quantity) desc")
+    .limit(limit)
+  end)
 end
