@@ -11,14 +11,14 @@ default: &default
 
 development:
   <<: *default
-  database: <%= ENV["DATABASE_DEVELOPMENT"]
+  database: <%= ENV["DATABASE_DEVELOPMENT"] %>
 
 test:
   <<: *default
-  database: <%= ENV["DATABASE_TEST"]
+  database: <%= ENV["DATABASE_TEST"] %>
 
 production:
   <<: *default
-  database: <%= ENV["DATABASE_PRODUCTION"]
-  username: <%= ENV["DATABASE_USERNAME_PRODUCTION"]
+  database: <%= ENV["DATABASE_PRODUCTION"] %>
+  username: <%= ENV["DATABASE_USERNAME_PRODUCTION"] %>
   password: <%= ENV['DATABASE_PASSWORD_PRODUCTION'] %>
