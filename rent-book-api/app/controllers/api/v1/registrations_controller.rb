@@ -15,7 +15,7 @@ module Api::V1
     end
 
     def ensure_params_exist
-      raise ExceptionHandler::MisstingParams if params[:sign_up].blank? || sign_up_params[:password_confirmation].blank?
+      raise ExceptionHandler::MissingParams if params[:sign_up].blank? || sign_up_params[:password_confirmation].blank?
     end
   end
 end

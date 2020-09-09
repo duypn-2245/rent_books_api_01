@@ -4,7 +4,7 @@ module ExceptionHandler
   class DecodeError < StandardError; end
   class ExpiredSignature < StandardError; end
   class MissingToken < StandardError; end
-  class MisstingParams < StandardError; end
+  class MissingParams < StandardError; end
   class MustHaveLeastOne < StandardError; end
 
   included do
@@ -26,7 +26,7 @@ module ExceptionHandler
       response_json I18n.t("errors.missing_token"), :unauthorized
     end
 
-    rescue_from ExceptionHandler::MisstingParams do |_error|
+    rescue_from ExceptionHandler::MissingParams do |_error|
       response_json I18n.t("errors.missing_params"), :unprocessable_entity
     end
 

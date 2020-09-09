@@ -12,7 +12,7 @@ Rails.application.routes.draw do
           get "books/:id/book_renter", to: "books#book_renter"
           resources :register_books, only: %i(index update)
           resources :register_book_details, only: %i(index)
-
+          get "statisticals", to: "books#statisticals", as: :statisticals
         end
         resources :books, only: %i(index show) do
           resources :comments, except: %i(new edit show)

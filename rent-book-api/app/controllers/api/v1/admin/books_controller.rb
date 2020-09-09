@@ -1,6 +1,7 @@
 class Api::V1::Admin::BooksController < ApplicationController
   before_action :load_book, only: %i(show update destroy book_renter)
   before_action :authenticate_request!
+  before_action :check_params_statisticals, only: :statisticals
   authorize_resource
 
   def index
@@ -43,6 +44,14 @@ class Api::V1::Admin::BooksController < ApplicationController
     @search.sorts = params[:sort] || Settings.book.sort_by_created_at
   end
 
+  def statisticals
+    start_time = params[:start_time]
+    end_time = params[:end_time]
+    books = Book.statistical(start_time, end_time, Settings.book.hot_books.limit)
+    meta = {start_time: start_time, end_time: end_time}
+    json_response_with_custom_serializer books, BookStatisticalSerializer, meta
+  end
+
   private
 
   def load_book
@@ -54,4 +63,7 @@ class Api::V1::Admin::BooksController < ApplicationController
                   images_attributes: [:id, :photo]
   end
 
+  def check_params_statisticals
+    raise ExceptionHandler::MissingParams if params[:start_time].blank? || params[:end_time].blank?
+  end
 end

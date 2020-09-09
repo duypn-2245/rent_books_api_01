@@ -8,11 +8,8 @@ RSpec.describe Api::V1::Admin::BooksController, type: :controller do
     {id: book.id, title: book.title, description: book.description,
      author: book.author, quantity: book.quantity, rent_cost: book.rent_cost}
   end
-  let!(:register_book){FactoryBot.create(:register_book, user: user)}
-  let!(:register_book_details) do
-    FactoryBot.create(:register_book_detail,
-                      register_book: register_book, book: book)
-  end
+  let!(:register_book){FactoryBot.create(:register_book)}
+  let!(:register_book_details){FactoryBot.create(:register_book_detail)}
   let(:invalid_params){{id: book.id, title: ""}}
   let(:renter_expected_repsonse) do
     {register_book_details:
@@ -24,6 +21,7 @@ RSpec.describe Api::V1::Admin::BooksController, type: :controller do
                                   intended_end_date: I18n.l(register_book.intended_end_date, format: :date_month_year_concise)}],
      meta: {page: 1, per_page: 10, total_page: 1}}.to_json
   end
+
 
   include_examples "login", :admin
   describe "GET #index" do
@@ -134,6 +132,23 @@ RSpec.describe Api::V1::Admin::BooksController, type: :controller do
 
       include_examples "response http status", :ok
       include_examples "index valid json", "register_book_details", 1
+    end
+  end
+
+  describe "GET #statisticals" do
+    context "with invalid params" do
+      subject{get :statisticals}
+
+      include_examples "response http status", :unprocessable_entity
+    end
+
+    context "with valid params" do
+      subject do
+        get :statisticals, params: {start_time: register_book.created_at - 10, end_time: register_book.created_at + 10}
+      end
+
+      include_examples "response http status", :ok
+      include_examples "index valid json", "books", 1
     end
   end
 end

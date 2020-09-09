@@ -16,7 +16,7 @@ module Api::V1
     private
 
     def ensure_params_exist
-      raise ExceptionHandler::MisstingParams unless params[:email].present? && params[:password].present?
+      raise ExceptionHandler::MissingParams unless params[:email].present? && params[:password].present?
     end
 
     def load_user

@@ -28,4 +28,15 @@ class Book < ApplicationRecord
     .order("sum(register_book_details.quantity) desc")
     .limit(limit)
   end)
+
+  scope :statistical, (lambda do |start_point, end_point, limit|
+    joins(register_book_details: [:register_book])
+    .select("books.*, count(*) as total_renter")
+    .where("(register_books.created_at between ? and ?) and register_books.status IN (?) ",
+           start_point.to_datetime, end_point.to_datetime,
+           [RegisterBook.statuses[:pending], RegisterBook.statuses[:approved]])
+    .group("books.id")
+    .order("total_renter desc")
+    .limit(limit)
+  end)
 end
