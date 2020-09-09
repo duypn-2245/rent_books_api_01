@@ -8,6 +8,8 @@ vi:
     missing_token: "Thiếu token!"
     missing_params: "Thiếu tham số!"
     detele_failed: "Xóa thất bại"
+    least_one_book: "Bạn phải thêm ít nhất một quyển sách!"
+    not_enough: "Lưu ý! %{name} chỉ còn: %{number} quyển sách"
   not_found_data: "Không tìm thấy dữ liệu!"
   time:
     formats:

@@ -1,0 +1,13 @@
+en:
+  register_books:
+    status:
+      pending: "pending"
+      approved: "approved"
+      rejected: "rejected"
+      finished: "finished"
+      canceled: "canceled"
+    create:
+      success: "Create successfull."
+    update:
+      not_permited: "Sorry! You can't change status"
+      success: "Update successfull."

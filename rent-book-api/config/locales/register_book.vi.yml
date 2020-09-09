@@ -1,0 +1,13 @@
+vi:
+  register_books:
+    status:
+      pending: "chờ xử lý"
+      approved: "chấp nhận"
+      rejected: "từ chối"
+      finished: "hoàn thành"
+      canceled: "hủy bỏ"
+    create:
+      success: "Tạo mới thành công."
+    update:
+      not_permited: "Xin lỗi! Bạn không thể thay đổi trạng thái"
+      success: "Cập nhật thành công."

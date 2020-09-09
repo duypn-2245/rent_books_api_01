@@ -17,3 +17,23 @@ vi:
               too_short: "Mật khẩu quá ngắn. Tối thiểu %{count} ký tự"
             password_confirmation:
               confirmation: "Không trùng với mật khẩu trên"
+        register_book:
+          attributes:
+            intended_end_date:
+              blank: "Ngày dự định kết thúc không được trống"
+              greater_start: "Ngày dự định kết thúc không được nhỏ hơn ngày bắt đầu"
+            end_date:
+              greater_start: "Ngày kết thúc không được nhỏ hơn ngày bắt đầu"
+            start_date:
+              blank: "Ngày bắt đầu không được trống"
+              invalid_date_now: "Ngày bắt đầu không được nhỏ hơn ngày hiện tại"
+        register_book_detail:
+          attributes:
+            book:
+              required: "Không tìm thấy cuốn sách này!"
+            quantity:
+              greater_than_or_equal_to: "Số lượng Không được nhỏ hơn %{count}"
+            rent_cost:
+              greater_than_or_equal_to: "Giá thuê không được nhỏ hơn %{count}"
+      messages:
+        greater_start_date: "Phải lớn hơn ngày bắt đầu"
