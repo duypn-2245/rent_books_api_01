@@ -1,0 +1,9 @@
+vi:
+  errors:
+    json_web_token:
+      invalid_token: "Đăng nhập thất bại! Token không hợp lệ."
+      expired_token: "Đăng nhập thất bại! Token đã hết hạn."
+    not_found_data: "Không tìm thấy dữ liệu!"
+    invalid_data: "Dữ liệu không hợp lệ"
+    missing_token: "Thiếu token!"
+    missing_params: "Thiếu tham số!"

@@ -25,3 +25,5 @@ register_book_detail:
     gteq: 0
   rent_cost:
     gteq: 0
+json_web_token:
+  expire_in: 24

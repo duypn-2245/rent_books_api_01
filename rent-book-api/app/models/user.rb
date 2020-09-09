@@ -14,6 +14,8 @@ class User < ApplicationRecord
 
   before_save :downcase_email
 
+  devise :database_authenticatable, :registerable, :validatable
+
   private
 
   def downcase_email

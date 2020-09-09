@@ -1,2 +1,9 @@
 en:
-  hello: "Hello world"
+  errors:
+    json_web_token:
+      invalid_token: "Access denied!. Invalid token supplied."
+      expired_token: "Access denied!. Token has expired."
+    not_found_data: "Not found data!"
+    invalid_data: "Invalid data!"
+    missing_token: "Missing token!"
+    missing_params: "Missing params!"
