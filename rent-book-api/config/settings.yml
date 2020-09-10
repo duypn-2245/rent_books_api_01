@@ -1,0 +1,27 @@
+user:
+  name:
+    maximum: 50
+  email:
+    maximum: 255
+    valid: !ruby/regexp '/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i'
+  password:
+    minimum: 6
+book:
+  title:
+    maximum: 50
+  description:
+    maximum: 200
+  author:
+    maximum: 50
+  quantity:
+    gteq: 0
+  rent_cost:
+    gteq: 0
+comment:
+  content:
+    maximum: 500
+register_book_detail:
+  quantity:
+    gteq: 0
+  rent_cost:
+    gteq: 0
