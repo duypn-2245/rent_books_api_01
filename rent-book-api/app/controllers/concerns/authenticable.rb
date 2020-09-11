@@ -1,5 +1,6 @@
 module Authenticable
   def authenticate_request!
+    @current_user = User.find auth_token[:user_id].to_i
     return if current_user.present?
   end
 
@@ -11,9 +12,5 @@ module Authenticable
 
   def auth_token
     JsonWebToken.decode(http_token)
-  end
-
-  def current_user
-    @current_user = User.find auth_token[:user_id].to_i
   end
 end

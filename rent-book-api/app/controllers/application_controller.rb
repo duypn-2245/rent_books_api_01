@@ -9,6 +9,14 @@ class ApplicationController < ActionController::API
     {locale: I18n.locale}
   end
 
+  def meta_pagination page, per_page, object
+    {
+      page: page,
+      per_page: per_page,
+      total_page: object.total_pages
+    }
+  end
+
   private
 
   def set_locale

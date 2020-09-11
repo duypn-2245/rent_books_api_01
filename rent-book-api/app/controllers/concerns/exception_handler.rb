@@ -28,6 +28,10 @@ module ExceptionHandler
     rescue_from ExceptionHandler::MisstingParams do |_error|
       response_json I18n.t("errors.missing_params"), :unprocessable_entity
     end
+
+    rescue_from CanCan::AccessDenied do |_error|
+      response_json I18n.t("errors.unauthorized"), :forbidden
+    end
   end
 
   private
