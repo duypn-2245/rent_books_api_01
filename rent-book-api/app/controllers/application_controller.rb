@@ -1,4 +1,8 @@
 class ApplicationController < ActionController::API
+  include ExceptionHandler
+  include Authenticable
+  include Response
+
   before_action :set_locale
 
   def default_url_options

@@ -1,0 +1,6 @@
+vi:
+  sessions:
+    create:
+      signed_in: "Đăng nhập thành công!"
+    destroy:
+      signed_out: "Đăng xuất thành công!."

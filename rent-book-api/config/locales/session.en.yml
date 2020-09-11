@@ -1,0 +1,6 @@
+en:
+  sessions:
+    create:
+      signed_in: "Signed in successfully."
+    destroy:
+      signed_out: "Signed out successfully."
