@@ -1,0 +1,19 @@
+vi:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "Tên không được trống"
+              too_long: "Tên không được vượt quá %{count} ký tự"
+            email:
+              blank: "Email không được trống"
+              taken: "Email đã tồn tại"
+              too_long: "Email không được vượt quá %{count} ký tự"
+              invalid: "Email không hợp lệ"
+            password:
+              blank: "Mật khẩu không được để trống"
+              too_short: "Mật khẩu quá ngắn. Tối thiểu %{count} ký tự"
+            password_confirmation:
+              confirmation: "Không trùng với mật khẩu trên"
