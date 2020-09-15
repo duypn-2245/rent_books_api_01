@@ -7,3 +7,4 @@ vi:
     invalid_data: "Dữ liệu không hợp lệ"
     missing_token: "Thiếu token!"
     missing_params: "Thiếu tham số!"
+  not_found_data: "Không tìm thấy dữ liệu!"

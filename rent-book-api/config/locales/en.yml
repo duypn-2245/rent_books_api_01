@@ -7,3 +7,5 @@ en:
     invalid_data: "Invalid data!"
     missing_token: "Missing token!"
     missing_params: "Missing params!"
+    unauthorized: "Unauthorized"
+  not_found_data: "Data not found"

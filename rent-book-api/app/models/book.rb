@@ -1,6 +1,9 @@
 class Book < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :register_book_details, dependent: :destroy
+  has_many :images, as: :imagetable, dependent: :destroy
+
+  accepts_nested_attributes_for :images
 
   validates :title, presence: true,
                     length: {maximum: Settings.book.title.maximum}

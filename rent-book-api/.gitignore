@@ -30,6 +30,7 @@
 
 # Ignore application configuration
 /config/application.yml
+/public/uploads
 
 config/settings.local.yml
 config/settings/*.local.yml
