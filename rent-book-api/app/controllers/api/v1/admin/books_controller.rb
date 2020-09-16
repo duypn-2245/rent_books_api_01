@@ -4,9 +4,10 @@ class Api::V1::Admin::BooksController < ApplicationController
   authorize_resource
 
   def index
+    search_and_sort
     page = params[:page] || Settings.book.page
     per_page = params[:per_page] || Settings.book.per_page
-    books = Book.page(page).per(per_page)
+    books = @search.result.page(page).per(per_page)
     json_response books, meta_pagination(page, per_page, books)
   end
 
@@ -27,6 +28,11 @@ class Api::V1::Admin::BooksController < ApplicationController
   def destroy
     @book.destroy!
     response_status :ok
+  end
+
+  def search_and_sort
+    @search = Book.ransack(params[:search])
+    @search.sorts = params[:sort] || Settings.book.sort_by_created_at
   end
 
   private
