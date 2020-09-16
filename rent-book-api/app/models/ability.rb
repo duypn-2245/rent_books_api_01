@@ -9,7 +9,9 @@ class Ability
     can :manager, Book
   end
 
-  def user_abilities _user
+  def user_abilities user
     can :read, Book
+    can [:read, :create], Comment
+    can [:update, :destroy], Comment, user_id: user.id
   end
 end
