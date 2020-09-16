@@ -29,3 +29,8 @@ register_book_detail:
     gteq: 0
 json_web_token:
   expire_in: 24
+show_limit_per_page:
+  book:
+    index_limit: 15
+per_page:
+  default_1: 1

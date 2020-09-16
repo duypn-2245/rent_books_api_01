@@ -15,4 +15,6 @@ class Book < ApplicationRecord
                                       greater_than_or_equal_to: Settings.book.quantity.gteq}
   validates :rent_cost, numericality: {greater_than_or_equal_to:
                                          Settings.book.rent_cost.gteq}
+
+  scope :recent, ->{order created_at: :desc}
 end

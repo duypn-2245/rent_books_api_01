@@ -545,3 +545,7 @@ Rails/ScopeArgs:
 Rails/Validation:
   Include:
     - app/models/**/*.rb
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'

@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_09_14_095743) do
 
-  create_table "activities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+  create_table "activities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "trackable_type"
     t.integer "trackable_id"
     t.string "owner_type"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_09_14_095743) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+  create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.text "image"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2020_09_14_095743) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "book_id", null: false
     t.text "content"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_09_14_095743) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "imagetable_id"
     t.string "imagetable_type"
     t.string "photo"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2020_09_14_095743) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "register_book_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+  create_table "register_book_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "book_id", null: false
     t.bigint "register_book_id", null: false
     t.integer "quantity"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2020_09_14_095743) do
     t.index ["register_book_id"], name: "index_register_book_details_on_register_book_id"
   end
 
-  create_table "register_books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+  create_table "register_books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.integer "status", default: 0
     t.datetime "start_date"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2020_09_14_095743) do
     t.index ["user_id"], name: "index_register_books_on_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.integer "role", default: 0

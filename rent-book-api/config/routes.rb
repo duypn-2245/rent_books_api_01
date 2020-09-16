@@ -10,6 +10,7 @@ Rails.application.routes.draw do
         namespace :admin do
           resources :books
         end
+        resources :books, only: %i(index show)
       end
     end
   end

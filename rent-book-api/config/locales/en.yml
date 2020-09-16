@@ -9,3 +9,6 @@ en:
     missing_params: "Missing params!"
     unauthorized: "Unauthorized"
   not_found_data: "Data not found"
+  time:
+    formats:
+      date_month_year_concise: "%m-%d-%Y"
