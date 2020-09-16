@@ -6,7 +6,7 @@ class Ability
   end
 
   def admin_abilities _user
-    can :manager, Book
+    can :manage, Book
   end
 
   def user_abilities user
