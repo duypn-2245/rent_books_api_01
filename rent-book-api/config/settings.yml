@@ -23,6 +23,9 @@ book:
 comment:
   content:
     maximum: 500
+register_book:
+  status:
+    rejected: "rejected"
 register_book_detail:
   quantity:
     gteq: 0

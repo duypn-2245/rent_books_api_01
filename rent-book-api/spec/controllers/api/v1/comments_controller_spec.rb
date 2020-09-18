@@ -1,5 +1,4 @@
 require "rails_helper"
-require "spec_helper"
 
 RSpec.describe Api::V1::CommentsController, type: :controller do
   let!(:user){FactoryBot.create(:user)}
@@ -58,8 +57,7 @@ RSpec.describe Api::V1::CommentsController, type: :controller do
         subject do
           put :update, params: {book_id: comment.book_id,
                                 id: comment.id,
-                                content: "example content",
-                                }
+                                content: "example content"}
         end
 
         include_examples "response http status", :forbidden
@@ -69,8 +67,7 @@ RSpec.describe Api::V1::CommentsController, type: :controller do
         subject do
           put :update, params: {book_id: correct_comment.book_id,
                                 id: correct_comment.id,
-                                content: "example content",
-                                }
+                                content: "example content"}
         end
 
         include_examples "response http status", :ok
