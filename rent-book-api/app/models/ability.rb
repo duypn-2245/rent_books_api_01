@@ -7,7 +7,7 @@ class Ability
 
   def admin_abilities _user
     can :manage, Book
-    can :update, RegisterBook
+    can [:read, :update], RegisterBook
   end
 
   def user_abilities user

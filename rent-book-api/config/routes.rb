@@ -9,7 +9,7 @@ Rails.application.routes.draw do
         post "sign_up", to: "registrations#create"
         namespace :admin do
           resources :books
-          resources :register_books, only: :update
+          resources :register_books, only: %i(index update)
         end
         resources :books, only: %i(index show) do
           resources :comments, except: %i(new edit show)

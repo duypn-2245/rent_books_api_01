@@ -3,6 +3,14 @@ class Api::V1::Admin::RegisterBooksController < ApplicationController
   authorize_resource
   before_action :load_register_book, :load_books, only: :update
 
+  def index
+    search = RegisterBook.ransack(params[:search])
+    page = params[:page] || Settings.register_book.page
+    per_page = params[:per_page] || Settings.register_book.per_page
+    register_books = search.result.page(page).per(per_page)
+    json_response register_books, meta_pagination(page, per_page, register_books)
+  end
+
   def update
     if params[:status] == Settings.register_book.status.rejected
       ActiveRecord::Base.transaction do
