@@ -14,6 +14,8 @@ Rails.application.routes.draw do
         resources :books, only: %i(index show) do
           resources :comments, except: %i(new edit show)
         end
+
+        resources :register_books, only: %i(create index update)
       end
     end
   end

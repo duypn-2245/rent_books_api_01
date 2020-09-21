@@ -40,5 +40,7 @@ show_limit_per_page:
     index_limit: 15
   comment:
     index_limit: 15
+  register_book:
+    index_limit: 15
 per_page:
   default_1: 1

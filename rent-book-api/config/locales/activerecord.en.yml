@@ -1,5 +1,10 @@
 en:
   activerecord:
+    attributes:
+      register_book_details:
+        book: "Book"
+      register_book_details/book:
+        book: "Book"
     errors:
       models:
         user:
@@ -17,3 +22,21 @@ en:
               too_short: "Password too short. Minimum %{count} words"
             password_confirmation:
               confirmation: "Not match password"
+        register_book:
+          attributes:
+            intended_end_date:
+              blank: "Must not be empty"
+              greater_start: "Intended end date must be greater than start date"
+            end_date:
+              greater_start: "End date must be greater than start date"
+            start_date:
+              blank: "Must not be empty"
+              invalid_date_now: "Start date must be greater or equal today"
+        register_book_detail:
+          attributes:
+            book:
+              required: "Not found book!"
+            quantity:
+              greater_than_or_equal_to: "Quantity must be greater than or equal to %{count}"
+            rent_cost:
+              greater_than_or_equal_to: "Rent cost be greater than or equal to %{count}"

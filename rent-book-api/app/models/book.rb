@@ -17,4 +17,6 @@ class Book < ApplicationRecord
                                          Settings.book.rent_cost.gteq}
 
   scope :recent, ->{order created_at: :desc}
+  scope :available, ->{where "quantity > ?", 0}
+  scope :by_ids, ->(ids){where id: ids}
 end

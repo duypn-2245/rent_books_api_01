@@ -5,6 +5,7 @@ module ExceptionHandler
   class ExpiredSignature < StandardError; end
   class MissingToken < StandardError; end
   class MisstingParams < StandardError; end
+  class MustHaveLeastOne < StandardError; end
 
   included do
     rescue_from ExceptionHandler::DecodeError do |_error|
@@ -35,6 +36,10 @@ module ExceptionHandler
 
     rescue_from ActiveRecord::RecordNotDestroyed do |_error|
       response_json I18n.t("errors.detele_failed"), :internal_server_error
+    end
+
+    rescue_from ExceptionHandler::MustHaveLeastOne do |_error|
+      response_json I18n.t("errors.least_one_book"), :unprocessable_entity
     end
   end
 

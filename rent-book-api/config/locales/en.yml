@@ -9,6 +9,8 @@ en:
     missing_params: "Missing params!"
     unauthorized: "Unauthorized"
     detele_failed: "Delete failed!"
+    least_one_book: "You must add at least one book!"
+    not_enough: "Warning! %{name} only: %{number} books"
   not_found_data: "Data not found"
   time:
     formats:
