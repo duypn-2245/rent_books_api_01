@@ -8,6 +8,7 @@ class Ability
   def admin_abilities _user
     can :manage, Book
     can [:read, :update], RegisterBook
+    can :read, RegisterBookDetail
   end
 
   def user_abilities user

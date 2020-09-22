@@ -1,22 +1,31 @@
 require "rails_helper"
 
 RSpec.describe Api::V1::Admin::BooksController, type: :controller do
+  let!(:user){FactoryBot.create(:user)}
   let!(:book){FactoryBot.create(:book)}
   let!(:book1){FactoryBot.create(:book)}
   let(:params) do
-    {
-      id: book.id,
-      title: book.title,
-      description: book.description,
-      author: book.author,
-      quantity: book.quantity,
-      rent_cost: book.rent_cost
-    }
+    {id: book.id, title: book.title, description: book.description,
+     author: book.author, quantity: book.quantity, rent_cost: book.rent_cost}
+  end
+  let!(:register_book){FactoryBot.create(:register_book, user: user)}
+  let!(:register_book_details) do
+    FactoryBot.create(:register_book_detail,
+                      register_book: register_book, book: book)
   end
   let(:invalid_params){{id: book.id, title: ""}}
+  let(:renter_expected_repsonse) do
+    {register_book_details:
+                                [{id: register_book_details.id, name: user.name,
+                                  quantity: register_book_details.quantity,
+                                  rent_cost: register_book_details.rent_cost,
+                                  start_date: I18n.l(register_book.start_date, format: :date_month_year_concise),
+                                  end_date: register_book.end_date,
+                                  intended_end_date: I18n.l(register_book.intended_end_date, format: :date_month_year_concise)}],
+     meta: {page: 1, per_page: 10, total_page: 1}}.to_json
+  end
 
   include_examples "login", :admin
-
   describe "GET #index" do
     context "have search params" do
       subject{get :index, params: {search: {title_cont: book.title}}}
@@ -111,6 +120,20 @@ RSpec.describe Api::V1::Admin::BooksController, type: :controller do
         subject
         expect(response.body["message"]).to be_present
       end
+    end
+  end
+
+  describe "GET #book_renter" do
+    context "get book renter" do
+      subject{get :book_renter, params: {id: book.id}}
+
+      it "return list book renter successfully" do
+        subject
+        expect(response.body).to eq(renter_expected_repsonse)
+      end
+
+      include_examples "response http status", :ok
+      include_examples "index valid json", "register_book_details", 1
     end
   end
 end

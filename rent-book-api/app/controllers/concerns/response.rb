@@ -10,6 +10,10 @@ module Response
     render json: object, meta: meta, status: status
   end
 
+  def json_response_with_custom_serializer object, serializer, meta = {} , status = :ok 
+    render json: object, each_serializer: serializer, meta: meta, status: status
+  end
+
   def response_status status
     render status: status
   end

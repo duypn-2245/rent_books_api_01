@@ -4,9 +4,13 @@ RSpec.describe Api::V1::Admin::RegisterBooksController, type: :controller do
   let!(:user){FactoryBot.create(:user)}
   let!(:book){FactoryBot.create(:book)}
   let!(:register_book){FactoryBot.create(:register_book, user: user)}
-  let!(:register_book_details){FactoryBot.create(:register_book_detail, register_book: register_book, book: book)}
+  let!(:register_book_details) do
+    FactoryBot.create(:register_book_detail,
+                      register_book: register_book, book: book)
+  end
   let(:filter_expected_repsonse) do
-    {register_books: [RegisterBookSerializer.new(register_book).attributes],
+    {register_books:
+                                [RegisterBookSerializer.new(register_book).attributes],
      meta: {page: 1, per_page: 10, total_page: 1}}.to_json
   end
   include_examples "login", :admin
