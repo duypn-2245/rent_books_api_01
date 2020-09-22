@@ -20,6 +20,8 @@ book:
   page: 1
   per_page: 10
   sort_by_created_at: ["created_at desc"]
+  hot_books:
+    limit: 10
 comment:
   content:
     maximum: 500

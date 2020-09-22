@@ -5,13 +5,13 @@ RSpec.describe Api::V1::Admin::RegisterBooksController, type: :controller do
   let!(:book){FactoryBot.create(:book)}
   let!(:register_book){FactoryBot.create(:register_book, user: user)}
   let!(:register_book_details){FactoryBot.create(:register_book_detail, register_book: register_book, book: book)}
-  let(:filter_expected_repsonse){{register_books:
-                                  [RegisterBookSerializer.new(register_book).attributes],
-                                  meta: {page: 1, per_page: 10, total_page: 1}}.to_json}
+  let(:filter_expected_repsonse) do
+    {register_books: [RegisterBookSerializer.new(register_book).attributes],
+     meta: {page: 1, per_page: 10, total_page: 1}}.to_json
+  end
   include_examples "login", :admin
 
   describe "GET #index" do
-
     context "filter by start date" do
       subject{get :index, params: {search: {start_date_cont: register_book.start_date}}}
 
@@ -25,7 +25,10 @@ RSpec.describe Api::V1::Admin::RegisterBooksController, type: :controller do
     end
 
     context "filter between start date" do
-      subject{get :index, params: {search: {start_date_gteq: register_book.start_date, start_date_lteq: register_book.start_date}}}
+      subject do
+        get :index, params: {search: {start_date_gteq: register_book.start_date,
+                                      start_date_lteq: register_book.start_date}}
+      end
 
       it "search register book successfully" do
         subject

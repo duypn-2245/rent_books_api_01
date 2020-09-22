@@ -3,7 +3,16 @@ require "rails_helper"
 RSpec.describe Api::V1::Admin::BooksController, type: :controller do
   let!(:book){FactoryBot.create(:book)}
   let!(:book1){FactoryBot.create(:book)}
-  let(:params){{id: book.id, title: book.title, description: book.description, author: book.author, quantity: book.quantity, rent_cost: book.rent_cost}}
+  let(:params) do
+    {
+      id: book.id,
+      title: book.title,
+      description: book.description,
+      author: book.author,
+      quantity: book.quantity,
+      rent_cost: book.rent_cost
+    }
+  end
   let(:invalid_params){{id: book.id, title: ""}}
 
   include_examples "login", :admin
