@@ -1,5 +1,5 @@
 class Api::V1::Admin::BooksController < ApplicationController
-  before_action :load_book, only: %i(show update destroy)
+  before_action :load_book, only: %i(show update destroy book_renter)
   before_action :authenticate_request!
   authorize_resource
 
@@ -30,6 +30,14 @@ class Api::V1::Admin::BooksController < ApplicationController
     response_status :ok
   end
 
+  def book_renter
+    page = params[:page] || Settings.register_book.page
+    per_page = params[:per_page] || Settings.register_book.per_page
+    register_books = @book.register_book_details.book_renter.page(page).per(per_page)
+    json_response_with_custom_serializer register_books, RentBookSerializer,
+                                         meta_pagination(page, per_page, register_books)
+  end
+
   def search_and_sort
     @search = Book.ransack(params[:search])
     @search.sorts = params[:sort] || Settings.book.sort_by_created_at
@@ -45,4 +53,5 @@ class Api::V1::Admin::BooksController < ApplicationController
     params.permit :title, :description, :author, :image, :quantity, :rent_cost,
                   images_attributes: [:id, :photo]
   end
+
 end
